@@ -2,7 +2,11 @@ import pandas as pd
 from datetime import datetime
 from time import perf_counter
 from random import choice
-HILLCLIMBING_TIME = 10
+#TODO 昇順に日付が並ぶようにする, なるべく複数学年が含まれるようにする（コメント欄に学年記入？）,名前の順は学年順にする, 可読性上げる
+
+#定数
+HILLCLIMBING_TIME = 10 #山登りを行う時間（秒）
+
 class Person:
     def __init__(self, name, coment):
         self.__name = name
@@ -107,7 +111,7 @@ def input_need_number():
 
 def read_questionnaire_data():
     """アンケートデータを読み込みます。"""
-    df = pd.read_csv("chouseisan.csv", header=1, index_col='日程')
+    df = pd.read_csv("chouseisan.csv", header=1, index_col='日程',encoding='cp932')
     return df
     
 def get_aggregate_data(df):
@@ -144,6 +148,7 @@ def create_initial_schedule_greedy(persons, timeframes, required_persons_num):
                 timeframe.add_scheduled_person(person_name)
 
 def timeframe_swap(timeframes,a_person,b_person):
+    """シフトを交換する"""
     a_s = a_person.scheduled_timeframes
     a_a = a_person.aviliable_timeframes
     b_s = b_person.scheduled_timeframes
@@ -165,6 +170,7 @@ def timeframe_swap(timeframes,a_person,b_person):
         
 
 def timeframe_change(timeframes,send_person,receive_person):
+    """シフト受け持つ人を変更する。"""
     s_s = send_person.scheduled_timeframes
     s_a = send_person.aviliable_timeframes
     r_s = receive_person.scheduled_timeframes
@@ -180,6 +186,10 @@ def timeframe_change(timeframes,send_person,receive_person):
     
                
 def mode_0(persons,timeframes,a_person,b_person):
+    """
+    乱択したaさんとbさんの参加シフト回数を比較し、差がある場合は差が縮まるようにする。
+    同じ場合は、一部交代できる場合は交代する
+    """
     if a_person.name == b_person.name:
         return
 
@@ -193,6 +203,7 @@ def mode_0(persons,timeframes,a_person,b_person):
 
 
 def mode_1(persons,timeframes,timeframe,required_person_num):
+    """選んだ時間帯の人数が不足している場合、追加できる人員がいれば追加する"""
     t_a = timeframe.aviliable_persons 
     t_s = timeframe.scheduled_persons
     tmp = t_a - t_s
