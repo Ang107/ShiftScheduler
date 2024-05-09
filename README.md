@@ -6,7 +6,7 @@
 
 - アンケートデータから利用可能な時間帯を読み込む。
 - 貪欲法による初期シフトスケジュールの作成。
-- 山登り法によるシフトスケジュールの最適化（現在は未実装）。
+- 山登り法によるシフトスケジュールの最適化。
 - スケジュールデータのCSV出力。
 
 ## システム要件
@@ -40,11 +40,13 @@
 
 [調整さん](https://chouseisan.com/)から出力できるファイルをそのまま利用できます。
 **出欠表をダウンロードする**から、
-- 文字コードをUTF-8
+- 文字コードをShift_JIS
 - 行と列の設定を標準
   
 に設定後、ダウンロードしてください。
 
-## 注意事項
+### 入出力例
+- [入力に用いるCSVファイルの例](https://github.com/Ang107/ShiftScheduler/blob/main/chouseisan.csv)
+- [出力されるCSVファイルの例-1](https://github.com/Ang107/ShiftScheduler/blob/main/20240509-224616_timeframes_shift.csv)
+- [出力されるCSVファイルの例-2](https://github.com/Ang107/ShiftScheduler/blob/main/20240509-224616_persons_shift.csv)
 
-現在、山登り法による最適化は実装されていません。初期の貪欲法によるスケジュール生成のみが機能します。
