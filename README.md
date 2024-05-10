@@ -1,6 +1,7 @@
 # シフトスケジューラー
 
 このプログラムは、特定の時間帯で必要な人員を確保するために、利用可能な個人のスケジュールからシフトを自動的に作成します。貪欲法を用いて初期スケジュールを生成し、その後山登り法を用いて解を改善します。
+一人当たりのシフト回数がなるべく均一になるように割り振られます。コメント欄に所属を記述することで、所属でソートされた結果を出力できます。
 
 ## 機能
 
@@ -13,7 +14,6 @@
 
 - Python 3.7 以上
 - pandas ライブラリ
-- datetime ライブラリ
 
 ## セットアップ
 
@@ -47,6 +47,6 @@
 
 ### 入出力例
 - [入力に用いるCSVファイルの例](https://github.com/Ang107/ShiftScheduler/blob/main/chouseisan.csv)
-- [出力されるCSVファイルの例-1](https://github.com/Ang107/ShiftScheduler/blob/main/20240509-230626_persons_shift.csv)
-- [出力されるCSVファイルの例-2](https://github.com/Ang107/ShiftScheduler/blob/main/20240509-230626_timeframes_shift.csv)
+- [出力されるCSVファイルの例-1](https://github.com/Ang107/ShiftScheduler/blob/main/output_1.csv)
+- [出力されるCSVファイルの例-2](https://github.com/Ang107/ShiftScheduler/blob/main/output_2.csv)
 
