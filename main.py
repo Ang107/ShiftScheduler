@@ -126,6 +126,7 @@ def read_questionnaire_data() -> pd.DataFrame:
     df = pd.read_csv(
         "chouseisan.csv", header=1, index_col="日程", encoding="cp932", dtype=str
     )
+    df = df.fillna('')
     return df
 
 
